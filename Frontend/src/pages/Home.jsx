@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router'
+import RecipeCard from '../components/RecipeCard'
 
 const Home = () => {
     return (
@@ -10,7 +10,7 @@ const Home = () => {
                     Discover, save, and explore your favorite recipes in one place.
                 </p>
                 <div className="flex gap-4">
-
+                    <RecipeCard />
                 </div>
             </div>
         </div>
