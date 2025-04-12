@@ -1,8 +1,8 @@
 var jwt = require("jsonwebtoken");
 require("dotenv").config();
 
-const Authentication = async (req, res, next) => {
-  const { token } = req.cookies();
+const isAuth = async (req, res, next) => {
+  const { token } = req.cookies;
   if (!token) {
     res.status(404).json({ message: "Don't have Token ⚠️" });
   }
@@ -15,4 +15,4 @@ const Authentication = async (req, res, next) => {
   });
 };
 
-module.exports = Authentication;
+module.exports = isAuth;
