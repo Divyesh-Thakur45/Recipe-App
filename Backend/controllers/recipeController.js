@@ -56,11 +56,12 @@ const recipeDataGet = async (req, res) => {
         .status(404)
         .json({ message: "Login Or Signup your account ⚠️", success: false });
     }
+    const userId = req.user._id;
     const isValide = await recipeModel.find({ userId: userid });
     if (isValide.length <= 0) {
       res
         .status(404)
-        .json({ message: "No data in favorites ⚠️", success: false });
+        .json({ message: "No data in favorites ⚠️", userId, success: false });
     }
     return res.status(200).json({ message: isValide, success: true });
   } catch (error) {

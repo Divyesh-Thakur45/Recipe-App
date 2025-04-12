@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const Login = () => {
     const navigate = useNavigate();
@@ -8,10 +9,14 @@ const Login = () => {
 
     const handleLogin = (e) => {
         e.preventDefault();
-        // Placeholder logic – you can replace this with actual auth
         if (email && password) {
-            console.log('Logged in:', { email, password });
-            navigate('/'); // redirect to home on successful login
+            axios.post("http://localhost:8080/user/login", {
+                email,
+                password
+            }, {
+                withCredentials: true,
+            }).then((res) => console.log(res))
+                .catch((err) => console.log(err))
         } else {
             alert('Please enter both email and password.');
         }
