@@ -16,11 +16,12 @@ const Register = () => {
             email,
             password
         })
-            .then((res) => {
-                console.log(res.data.message);
-                // Navigate to login page on success
-                navigate('/login');
-            })
+            .then((res) => (
+                alert(res.data.message),
+                localStorage.setItem("userId", res.data.UserInfo._id),
+                navigate('/')
+            )
+            )
             .catch((err) => {
                 console.log("Error registering user:", err);
                 alert("Registration failed");

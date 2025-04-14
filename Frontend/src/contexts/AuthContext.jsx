@@ -1,9 +1,23 @@
-import React from 'react'
+import React, { createContext, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const AuthContext = () => {
+const AuthContext = createContext();
+
+export const AuthProvider = ({ children }) => {
+  const navigate = useNavigate();
+  const token = localStorage.getItem("userId");
+
+  const checkAuth = () => {
+    if (!token) {
+      navigate("/");
+    }
+  };
+  
   return (
-    <div>AuthContext</div>
-  )
-}
+    <AuthContext.Provider value={{ checkAuth }}>
+      {children}
+    </AuthContext.Provider>
+  );
+};
 
-export default AuthContext
+export const useAuth = () => useContext(AuthContext);

@@ -23,10 +23,14 @@ const registerController = async (req, res) => {
           .status(404)
           .json({ message: "Error in creating password ❌", success: false });
       }
-      await userModel.create({ name, email, password: hash });
+      const userData = await userModel.create({ name, email, password: hash });
       res
         .status(200)
-        .json({ message: "User created successfully 🎉", success: true });
+        .json({
+          message: "User created successfully 🎉",
+          UserInfo: userData,
+          success: true,
+        });
     });
   } catch (error) {
     res
@@ -70,9 +74,11 @@ const loginController = async (req, res) => {
               secure: false, // set to true if using HTTPS
               sameSite: "lax", // helps prevent CSRF
             });
-            return res
-              .status(200)
-              .json({ message: "Login Successfully 🎉", success: true });
+            return res.status(200).json({
+              message: "Login Successfully 🎉",
+              data: isExist,
+              success: true,
+            });
           }
         );
       }

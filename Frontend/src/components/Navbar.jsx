@@ -1,7 +1,12 @@
 import React from 'react'
-import { Link } from 'react-router'
+import { Link, useNavigate } from 'react-router'
 
 const Navbar = () => {
+    const navigate = useNavigate()
+    const logout = () => {
+        localStorage.removeItem("userId");
+        navigate("/");
+    }
     return (
         <div>
             <nav className="bg-white shadow-md fixed w-full top-0 z-50">
@@ -50,6 +55,7 @@ const Navbar = () => {
 
                             <button
                                 className="bg-red-500 text-white px-4 py-1 rounded hover:bg-red-600 transition"
+                                onClick={logout}
                             >
                                 Logout
                             </button>

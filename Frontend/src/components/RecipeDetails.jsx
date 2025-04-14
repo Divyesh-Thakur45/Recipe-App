@@ -1,12 +1,12 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 
 const RecipeDetails = () => {
   const { Userid } = useParams()
   const [data, setData] = useState(null)
-  const [prosnalID, setprosnalID] = useState("")
-  console.log(prosnalID)
+
+  // console.log(prosnalID)
   console.log(data)
   const descriptionPageFun = () => {
     axios.get(`https://api.spoonacular.com/recipes/${Userid}/information`, {
@@ -41,7 +41,7 @@ const RecipeDetails = () => {
       pricePerServing: data.pricePerServing,
     }, {
       withCredentials: true,
-    }).then((res) => setprosnalID(res.data.message.userId))
+    }).then((res) => alert(res.data.message))
       .catch((err) => console.log(err))
   }
   return (
@@ -69,11 +69,10 @@ const RecipeDetails = () => {
             className="text-gray-600 text-sm leading-relaxed"
             dangerouslySetInnerHTML={{ __html: summary }}
           />
-          <Link to={`/favorites/${prosnalID}`}>
-            <button className="mt-4 px-4 py-2 bg-red-500 text-white rounded-full hover:bg-red-600 transition duration-300" onClick={() => addToFav()}>
-              ❤️ Add To Favorites
-            </button>
-          </Link>
+
+          <button className="mt-4 px-4 py-2 bg-red-500 text-white rounded-full hover:bg-red-600 transition duration-300" onClick={() => addToFav()}>
+            ❤️ Add To Favorites
+          </button>
         </div>
       </div>
 

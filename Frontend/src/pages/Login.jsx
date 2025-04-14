@@ -15,7 +15,7 @@ const Login = () => {
                 password
             }, {
                 withCredentials: true,
-            }).then((res) => console.log(res))
+            }).then((res) => localStorage.setItem("userId", res.data.data._id))
                 .catch((err) => console.log(err))
         } else {
             alert('Please enter both email and password.');
