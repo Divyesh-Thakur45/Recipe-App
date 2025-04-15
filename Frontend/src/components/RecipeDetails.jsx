@@ -9,7 +9,7 @@ const RecipeDetails = () => {
   // console.log(prosnalID)
   console.log(data)
   const descriptionPageFun = () => {
-    axios.get(`https://recipe-app-oc1s.onrender.com/recipes/${Userid}/information`, {
+    axios.get(`https://api.spoonacular.com/recipes/${Userid}/information`, {
       params: {
         apiKey: import.meta.env.VITE_SPOONACULAR_API_KEY
       }
@@ -17,6 +17,7 @@ const RecipeDetails = () => {
       .then((res) => setData(res?.data))
       .catch((err) => console.error("API error:", err))
   }
+
 
 
   useEffect(() => {
