@@ -8,7 +8,7 @@ const recipeRoute = require("./routes/recipeRoutes");
 const app = express();
 app.use(
   cors({
-    origin: "https://recipe-app-zeta-henna.vercel.app/",
+    origin: "https://recipe-app-zeta-henna.vercel.app",
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
