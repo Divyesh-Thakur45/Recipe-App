@@ -7,7 +7,7 @@ const SavedRecipes = () => {
     const userId = localStorage.getItem("userId");
 
     const showFav = () => {
-        axios.get(`http://localhost:8080/recipes/get/${userId}`, {
+        axios.get(`https://recipe-app-oc1s.onrender.com/recipes/get/${userId}`, {
             withCredentials: true
         })
             .then((res) => setData(res.data.message))
@@ -15,7 +15,7 @@ const SavedRecipes = () => {
     };
 
     const deleteData = (id) => {
-        axios.delete(`http://localhost:8080/recipes/delete/${id}`, {
+        axios.delete(`https://recipe-app-oc1s.onrender.com/recipes/delete/${id}`, {
             withCredentials: true
         })
             .then((res) => {

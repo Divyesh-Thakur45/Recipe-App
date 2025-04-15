@@ -12,7 +12,7 @@ const RecipeCard = () => {
         if (!didFetch.current) {
             didFetch.current = true;
             axios
-                .get(`http://localhost:8080/recipes/search`, {
+                .get(`https://recipe-app-oc1s.onrender.com/recipes/search`, {
                     withCredentials: true,
                 })
                 .then((res) => {

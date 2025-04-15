@@ -9,7 +9,7 @@ const RecipeDetails = () => {
   // console.log(prosnalID)
   console.log(data)
   const descriptionPageFun = () => {
-    axios.get(`https://api.spoonacular.com/recipes/${Userid}/information`, {
+    axios.get(`https://recipe-app-oc1s.onrender.com/recipes/${Userid}/information`, {
       params: {
         apiKey: import.meta.env.VITE_SPOONACULAR_API_KEY
       }
@@ -34,7 +34,7 @@ const RecipeDetails = () => {
     extendedIngredients
   } = data
   const addToFav = () => {
-    axios.post("http://localhost:8080/recipes/create", {
+    axios.post("https://recipe-app-oc1s.onrender.com/recipes/create", {
       image: data.image,
       title: data.title,
       summary: data.summary,

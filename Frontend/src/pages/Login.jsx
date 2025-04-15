@@ -10,7 +10,7 @@ const Login = () => {
     const handleLogin = (e) => {
         e.preventDefault();
         if (email && password) {
-            axios.post("http://localhost:8080/user/login", {
+            axios.post("https://recipe-app-oc1s.onrender.com/user/login", {
                 email,
                 password
             }, {

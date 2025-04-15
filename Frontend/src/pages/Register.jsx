@@ -11,7 +11,7 @@ const Register = () => {
     const handleRegister = (e) => {
         e.preventDefault();
 
-        axios.post("http://localhost:8080/user/register", {
+        axios.post("https://recipe-app-oc1s.onrender.com/user/register", {
             name,
             email,
             password
